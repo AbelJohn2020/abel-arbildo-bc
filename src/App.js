@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login';
 import SignUpForm from './components/SignUpForm/SignUpForm';
+import './App.css';
 
 function App() {
   return (
