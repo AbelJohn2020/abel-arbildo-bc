@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
-import { BsCoin } from "react-icons/bs"
+import Icons from '../Icons/Icons';
+import Navbar from '../Navbar/Navbar';
 
 const Login = () => {
     const [login, setLogin] = useState({
@@ -31,8 +32,8 @@ const Login = () => {
         <div className="container-login">
             <div className="login">
                 <div className="login__title">
-                    <p className="text-capitalize fw-bolder lh-base fs-1 login__title--name">my wallet</p>
-                    <BsCoin size="32px" color="#FFFFFF"/>
+                    <p className="text-capitalize fw-bolder lh-base fs-2 login__title--name">my wallet</p>
+                    <Icons type="coin" size="32px" color="#FFFFFF"/>
                 </div>
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="login__form">
