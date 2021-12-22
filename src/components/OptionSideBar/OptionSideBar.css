@@ -12,17 +12,13 @@
     color: #FFFFFF;
 }
 
-.option-sidebar {
-    background: rgba(148, 151, 154, 0.1);
+.option-sidebar,
+.option-sidebar:hover {
     color: #393D41;
 }
 
 .selected:hover {
     color: #FFFFFF;
-}
-
-.option-sidebar:hover {
-    color: #393D41;
 }
 
 .selected-responsive {
