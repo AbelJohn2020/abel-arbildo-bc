@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import Icons from '../Icons/Icons';
-import Navbar from '../Navbar/Navbar';
 
 const Login = () => {
     const [login, setLogin] = useState({
@@ -28,7 +27,6 @@ const Login = () => {
     }
 
     return (
-        // <div className="container-sm border p-2 border-white border-2 bg-warning bg-opacity-75 rounded-3">
         <div className="container-login">
             <div className="login">
                 <div className="login__title">

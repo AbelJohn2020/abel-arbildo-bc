@@ -1,0 +1,14 @@
+.sidebar-styles {
+    width: 16%;
+    height: 93vh;
+    background: rgba(148, 151, 154, 0.1);
+}
+
+@media (max-width: 780px) {
+    .sidebar-styles {
+        width: 100%;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+}

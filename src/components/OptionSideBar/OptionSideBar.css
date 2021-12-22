@@ -1,0 +1,53 @@
+.selected,
+.option-sidebar {
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    padding: 4px 8px;
+    align-items: center;
+    outline: none;
+}
+.selected {
+    background: #E5B454;
+    color: #FFFFFF;
+}
+
+.option-sidebar {
+    background: rgba(148, 151, 154, 0.1);
+    color: #393D41;
+}
+
+.selected:hover {
+    color: #FFFFFF;
+}
+
+.option-sidebar:hover {
+    color: #393D41;
+}
+
+.selected-responsive {
+    display: none;
+}
+
+.option-sidebar-responsive {
+    display: none;
+}
+
+.selected p,
+.option-sidebar p {
+    padding: 0;
+    margin: 0 0 0 8px;
+}
+
+@media (max-width: 780px) {
+    .selected,
+    .option-sidebar {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .option-sidebar {
+        background: rgba(255, 193, 7, 0.85);
+        color: #FFFFFF;
+    }
+}

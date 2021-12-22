@@ -5,7 +5,7 @@ import './Navbar.css';
 const Navbar = () => {
     const [logOut, setLogOut] = useState(false)
     return (
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center navbar-styles">
             <div className="d-flex flex-column">
                 <button className="btn text-capitalize lh-base align-middle text-white" onClick={() => setLogOut(!logOut)}>
                     <Icons type="ellipsis" size="24px" color="#FFFFFF" />

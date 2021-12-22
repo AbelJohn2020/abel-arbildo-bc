@@ -1,35 +1,50 @@
-import React from 'react'
-import Icons from '../Icons/Icons';
+import React, { useState } from 'react';
+import OptionSideBar from '../OptionSideBar/OptionSideBar';
+import "./SideBar.css"
 
 const SideBar = () => {
+    const [activeOption, setActiveOption] = useState("");
     return (
-        <div className="container">
-            <div className="row">
-                <button type="button" className="col btn btn-warning fw-bolder text-capitalize lh-base align-middle text-white">
-                    <Icons type="wallet" size="24px" color="#FFFFFF" />
-                    <p>wallet</p>
-                </button>
+        <div className="sidebar-styles">
+            <OptionSideBar 
+                onClick={() => setActiveOption("wallet")}
+                icon="wallet"
+                name="/wallet"
+                isActive="wallet"
+                activeOption={activeOption}
+            />
 
-                <button type="button" className="col btn btn-warning fw-bolder text-capitalize lh-base align-middle text-white">
-                    <Icons type="paperPlane" size="24px" color="#FFFFFF" />
-                    <p>send</p>
-                </button>
+            <OptionSideBar 
+                onClick={() => setActiveOption("send")}
+                icon="paperPlane"
+                name="/send"
+                isActive="send"
+                activeOption={activeOption}
+            />
 
-                <button type="button" className="col btn btn-warning fw-bolder text-capitalize lh-base align-middle text-white">
-                    <Icons type="contacts" size="24px" color="#FFFFFF" />
-                    <p>contacts</p>
-                </button>
+            <OptionSideBar 
+                onClick={() => setActiveOption("contacts")}
+                icon="contacts"
+                name="/contacts"
+                isActive="contacts"
+                activeOption={activeOption}
+            />
 
-                <button type="button" className="col btn btn-warning fw-bolder text-capitalize lh-base align-middle text-white">
-                    <Icons type="receive" size="24px" color="#FFFFFF" />
-                    <p>receive</p>
-                </button>
+            <OptionSideBar 
+                onClick={() => setActiveOption("receive")}
+                icon="receive"
+                name="/receive"
+                isActive="receive"
+                activeOption={activeOption}
+            />
 
-                <button type="button" className="col btn btn-warning fw-bolder text-capitalize lh-base align-middle text-white">
-                    <Icons type="shop" size="24px" color="#FFFFFF" />
-                    <p>shop</p>
-                </button>
-            </div>
+            <OptionSideBar 
+                onClick={() => setActiveOption("shop")}
+                icon="shop"
+                name="/shop"
+                isActive="shop"
+                activeOption={activeOption}
+            />
         </div>
     )
 }
