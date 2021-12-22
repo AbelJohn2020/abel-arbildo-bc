@@ -10,6 +10,11 @@
     padding: 24px 0 40px 0;
 }
 
+.phone-input input {
+    border: none;
+    outline: none;
+}
+
 @media (max-width: 780px) {
     .sign-up {
         width: 100%;
