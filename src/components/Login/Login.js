@@ -16,27 +16,26 @@ const Login = () => {
                     <div className="login__form">
                         <div className="mb-3">
                             <label 
-                                htmlFor="exampleInputUser1" 
+                                htmlFor="user" 
                                 className="form-label text-capitalize fw-bolder text-white fs-5 res"
                             >username</label>
                             <input 
                                 type="text" 
                                 className="form-control border-white border-2" 
-                                id="exampleInputUser1" 
-                                aria-describedby="emailHelp" 
+                                id="user"
                                 placeholder="Username"
                             />
                         </div>
 
                         <div className="mb-3">
                             <label 
-                                htmlFor="inputPassword6" 
+                                htmlFor="password" 
                                 className="form-label text-white fw-bolder text-capitalize fs-5 res"
                             >password</label>
                             <input 
                                 type="password" 
                                 className="form-control border-white border-2" 
-                                id="inputPassword6" 
+                                id="password" 
                                 placeholder="Password"
                             />
                         </div>
@@ -46,7 +45,10 @@ const Login = () => {
                             type="submit" 
                             className="btn btn-warning fw-bolder text-capitalize lh-base align-middle border-2 border-light text-white"
                         >login</button>
-                        <Link to="/signup" className="btn btn-warning fw-bolder text-capitalize lh-base align-middle border-2 border-light text-white signup">sign up</Link>
+                        <Link 
+                            to="/signup" 
+                            className="btn btn-warning fw-bolder text-capitalize lh-base align-middle border-2 border-light text-white signup"
+                        >sign up</Link>
                     </div>
                 </form>
             </div>

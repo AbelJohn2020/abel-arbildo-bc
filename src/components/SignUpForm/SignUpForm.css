@@ -1,0 +1,21 @@
+.sign-up {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40%;
+    flex-direction: column;
+    background: linear-gradient( rgba(253, 126, 20, 0.85), rgb(255, 193, 7));
+    padding: 24px 0 40px 0;
+}
+
+@media (max-width: 780px) {
+    .sign-up {
+        width: 100%;
+        padding: 24px 4% 40px 4%;
+    }
+}
+
+/* @media (max-width: 420px) {
+} */
