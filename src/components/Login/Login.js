@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
-import Icons from '../Icons/Icons';
+import Banexcoin from "../images/banexcoin.png";
 
-const Login = () => {
+const Login = ({ idiom }) => {
     const [login, setLogin] = useState({
         username: '',
         password: '',
@@ -28,53 +28,56 @@ const Login = () => {
 
     return (
         <div className="container-login">
+            <div className='box-banexboin'>
+                <img src={Banexcoin} alt="A client buying banexcoin" className="banexcoin" />
+            </div>
             <div className="login">
                 <div className="login__title">
-                    <p className="text-capitalize fw-bolder lh-base fs-2 login__title--name">my wallet</p>
-                    <Icons type="coin" size="32px" color="#FFFFFF"/>
+                    <h1 className="login__title--name">
+                        {idiom ? "We are" : "Somos"} <div>Banexcoin</div>
+                    </h1>
+                    <p className="text-capitalize login__subtitle--name">
+                        {idiom ? "login" : "iniciar sesion"}
+                    </p>
                 </div>
                 <form className="form" onSubmit={handleSubmit}>
-                    <div className="login__form">
-                        <div className="mb-3">
-                            <label 
-                                htmlFor="user" 
-                                className="form-label text-capitalize fw-bolder text-white fs-5 res"
-                            >username</label>
-                            <input 
-                                type="text" 
-                                className="form-control border-white border-2" 
-                                id="user"
-                                placeholder="Username"
-                                value={login.username}
-                                onChange={handleChangeUsername}
-                            />
-                        </div>
+                    <div className="mb-3">
+                        <label 
+                            htmlFor="user" 
+                            className="form-label text-capitalize fw-bolder res"
+                        >{idiom ? "username" : "usuario"}</label>
+                        <input 
+                            type="text" 
+                            className="form-control border-white border-2" 
+                            id="user"
+                            placeholder={idiom ? "Username" : "Usuario"}
+                            value={login.username}
+                            onChange={handleChangeUsername}
+                        />
+                    </div>
 
-                        <div className="mb-3">
-                            <label 
-                                htmlFor="password" 
-                                className="form-label text-white fw-bolder text-capitalize fs-5 res"
-                            >password</label>
-                            <input 
-                                type="password" 
-                                className="form-control border-white border-2" 
-                                id="password" 
-                                placeholder="Password"
-                                value={login.password}
-                                onChange={handleChangePassword}
-                            />
-                        </div>
-                    </div>
-                    <div className="d-flex justify-content-center buttons">    
-                        <button 
-                            type="submit" 
-                            className="btn btn-warning fw-bolder text-capitalize lh-base align-middle border-2 border-light text-white"
-                        >login</button>
-                        <Link 
-                            to="/signup" 
-                            className="btn btn-warning fw-bolder text-capitalize lh-base align-middle border-2 border-light text-white signup"
-                        >sign up</Link>
-                    </div>
+                    <div className="mb-3">
+                        <label 
+                            htmlFor="password" 
+                            className="form-label fw-bolder text-capitalize res"
+                        >{idiom ? "password" : "contraseña"}</label>
+                        <input 
+                            type="password" 
+                            className="form-control border-white border-2" 
+                            id="password" 
+                            placeholder={idiom ? "Password" : "Contraseña"}
+                            value={login.password}
+                            onChange={handleChangePassword}
+                        />
+                    </div> 
+                    <button 
+                        type="submit" 
+                        className="btn btn-warning fw-bolder text-capitalize lh-base align-middle border-2 border-light text-white btn-login"
+                    >{idiom ? "login" : "iniciar sesion"}</button>
+                    <Link 
+                        to="/signup" 
+                        className="btn btn-warning fw-bolder text-capitalize lh-base align-middle border-2 border-light text-white signup"
+                    >{idiom ? "sign up" : "registrarse"}</Link>
                 </form>
             </div>
         </div>

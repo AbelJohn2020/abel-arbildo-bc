@@ -1,3 +1,5 @@
+@import url("../UI/global.css");
+
 .container-login,
 .login,
 .login__title {
@@ -15,14 +17,21 @@
 }
 
 .container-login {
-    background: #dee2e6;
+    /* background: #dee2e6; */
+    background: #FAFAFA;
+    font-family: "Montserrat";
 }
 
 .login {
-    width: 48%;
+    width: 36%;
     height: 100vh;
     flex-direction: column;
-    background: linear-gradient( rgba(253, 126, 20, 0.85), rgb(255, 193, 7));
+    background: #FAFAFA;
+    position: absolute;
+    top: 0.055%;
+    left: 56%;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 40px 0 0 40px;
 }
 
 .form {
@@ -36,27 +45,77 @@
     margin: 16px 0;
 }
 
-.login__title--name {
-    color: #FFFFFF;
-    margin: 0 16px 0 0;
-    padding: 0;
+.login__title {
+    flex-direction: column;
 }
 
-.buttons {
-    margin: 0 0 16px 0;
+.login__title--name,
+.res {
+    color: #202121;
+}
+
+.login__title--name {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.login__subtitle--name {
+    color: #373a39;
+    margin: 10px 0 24px 0;
+    padding: 0;
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.login__title--name div {
+    color: #ff8e0a;
+    padding: 0 0 0 8px;
+}
+
+.btn-login,
+.signup {
+    padding: 16px 0;
 }
 
 .signup {
+    box-sizing: border-box;
     text-decoration: none;
     display: flex;
     align-items: center;
-    margin: 0 0 0 16px;
-    padding: 0 8px;
+    justify-content: center;
+    margin: 0;
+    
 }
+
+.btn-login {
+    color: #FAFAFA;
+    background-color: #393A39;
+    width: 100%;
+}
+
+.res {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+
 
 @media (max-width: 780px) {
     .login {
         width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .box-banexboin {
+        display: none;
     }
 
     .login__form {
