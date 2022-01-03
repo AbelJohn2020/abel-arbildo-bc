@@ -1,0 +1,19 @@
+.navbar {
+    /* background: #353a36; */
+    background: #202121;
+    padding: 30px 32px 66px 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 21.15%;
+}
+
+@media (max-width: 780px) {
+    .navbar {
+        padding: 32px 0;
+        display: flex;
+        justify-content: center;
+    }
+}
