@@ -5,28 +5,39 @@ import Banexcoin from "../images/banexcoin.png";
 import Icons from '../Icons/Icons';
 
 const Login = ({ idiom }) => {
-    const [login, setLogin] = useState({
-        username: '',
-        password: '',
-    });
+    const [login, setLogin] = useState({});
+    const [usernameField, setUsernameField] = useState({ username: '', valid: null });
+    const [passwordField, setPasswordField] = useState({ password: '', valid: null });
+
     const [show, setShow] = useState(false);
     const [active, setActive] = useState('');
 
     const handleChangeUsername = (e) => {
-        setLogin({ ...login, username: e.target.value });
+        setUsernameField({ ...usernameField, username: e.target.value});
     }
 
     const handleChangePassword = (e) => {
-        setLogin({ ...login, password: e.target.value })
+        setPasswordField({ ...passwordField, password: e.target.value });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setLogin({...login});
-        setLogin({
-            username: '',
-            password: '',
-        })
+
+        if(usernameField.username === "" && passwordField.password === "") {
+            setUsernameField({ ...usernameField, valid: false });
+            setPasswordField({ ...passwordField, valid: false });
+        } else if(usernameField.username === "") {
+            setUsernameField({ ...usernameField, valid: false });
+        } else if(passwordField.password === "") {
+            setPasswordField({ ...passwordField, valid: false });
+        } else {
+            setUsernameField({ ...usernameField, valid: true });
+            setPasswordField({ ...passwordField, valid: true });
+
+            setLogin({ ...login, usernameField, passwordField });
+            setUsernameField({ username: '', valid: null });
+            setPasswordField({ password: '', valid: null });
+        }
     }
 
     return (
@@ -51,21 +62,32 @@ const Login = ({ idiom }) => {
                                 className="form-label text-capitalize fw-bolder res"
                             >{idiom ? "username" : "usuario"}</label>
                             <div 
-                                className={active === "user" ? "box-input active" : "box-input"} 
+                                className={usernameField.username==="" && usernameField.valid === false ? "box-input empty" : (active === "user" ? "box-input active" : "box-input")} 
                                 onClick={() => setActive("user")}
+                                onBlur={() => setActive("")}
                             >
                                 <input 
                                     type="text" 
                                     className="form-control" 
                                     id="user"
                                     placeholder={idiom ? "Username" : "Usuario"}
-                                    value={login.username}
+                                    value={usernameField.username}
                                     onChange={handleChangeUsername}
+                                    autoComplete="off"
                                 />
                                 <div className="box-icon">
                                     <Icons type="user" color="#495057" />
                                 </div>
                             </div>
+
+                            {
+                                (usernameField.username==="" && usernameField.valid === false) && 
+                                <p className="empty-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                            }
+                            {/* {
+                                (usernameField.username==="" && usernameField.valid === false) && 
+                                <p className="empty-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                            } */}
                         </div>
 
                         <div className="mb-3">
@@ -74,21 +96,28 @@ const Login = ({ idiom }) => {
                                 className="form-label fw-bolder text-capitalize res"
                             >{idiom ? "password" : "contraseña"}</label>
                             <div 
-                                className={active === "password" ? "box-input active" : "box-input"} 
+                                className={passwordField.password==="" && passwordField.valid === false ? "box-input empty" : (active === "password" ? "box-input active" : "box-input")} 
                                 onClick={() => setActive("password")}
+                                onBlur={() => setActive("")}
                             >
                                 <input 
                                     type={show ? "text" : "password"} 
                                     className="form-control" 
                                     id="password" 
                                     placeholder={idiom ? "Password" : "Contraseña"}
-                                    value={login.password}
+                                    value={passwordField.password}
                                     onChange={handleChangePassword}
+                                    autoComplete="off"
                                 />
                                 <div onClick={() => setShow(!show)} className="password box-icon">
                                     <Icons type={show ? "showPassword" : "password"} color="#495057" />
                                 </div>
                             </div>
+
+                            {
+                                (passwordField.password==="" && passwordField.valid === false) &&
+                                <p className="empty-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                            }
                         </div> 
                         <button 
                             type="submit" 

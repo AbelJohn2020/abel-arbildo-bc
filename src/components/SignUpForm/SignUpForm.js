@@ -67,6 +67,20 @@ const SignUpForm = () => {
         });
     }
 
+    // const passwordMessage = () => {
+    //     if(passwordField.password.length >= 2) {
+    //         const getPassword = passwordField.password.split('');
+    //         const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    //         const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    //         console.log(getPassword)
+            
+    //         // setPasswordField({ ...passwordField, valid: true });
+    //     } else {
+    //         // return "worng"
+    //         console.log("wrong");
+    //     }
+    // }
+
     return (
         <div className="container-login">
             <div className="sign-up">
