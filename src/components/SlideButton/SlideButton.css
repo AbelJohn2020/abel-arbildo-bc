@@ -1,0 +1,18 @@
+.form-check-input:checked {
+    background-color: #ff8e0a;
+    border-color: #ff8e0a;
+}
+
+.form-check-input:focus {
+    box-shadow: none;
+}
+
+.form-check-label {
+    margin: 0 0 0 6px;
+    font-weight: 600;
+    color: #F0F0F0;
+}
+
+input[type="checkbox" i] {
+    cursor: pointer;
+}
