@@ -1,5 +1,5 @@
-import { FaEllipsisV, FaShoppingCart } from "react-icons/fa";
-import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { FaEllipsisV, FaShoppingCart, FaRegUser } from "react-icons/fa";
+import { BsFillGrid3X3GapFill, BsEyeSlash, BsEye } from "react-icons/bs";
 import { BsCoin } from "react-icons/bs";
 import { IoIosWallet, IoIosPaperPlane, IoMdContacts } from "react-icons/io";
 import { ImArrowDown } from "react-icons/im";
@@ -13,6 +13,9 @@ const iconSet = {
   contacts: IoMdContacts,
   receive: ImArrowDown,
   shop: FaShoppingCart,
+  user: FaRegUser,
+  password: BsEyeSlash,
+  showPassword: BsEye,
 };
 
 const Icons = ({ type, size, color }) => {

@@ -2,11 +2,17 @@
 
 .container-login,
 .login,
-.login__title {
+.login__title,
+.box-login-form {
     box-sizing: border-box;
     display: flex;
-    align-items: center;
+}
+
+.container-login,
+.login__title,
+.box-login-form {
     justify-content: center;
+    align-items: center;
 }
 
 .container-login,
@@ -16,22 +22,43 @@
     box-sizing: border-box;
 }
 
+
 .container-login {
-    /* background: #dee2e6; */
     background: #FAFAFA;
     font-family: "Montserrat";
+    min-height: 80vh;
+}
+
+.box-banexboin {
+    width: 100%;
+    padding: 5px 0 0 283px;
+    display: flex;
+}
+
+.banexcoin {
+    width: 31.8%;
+}
+
+.login,
+.box-login-form {
+    flex-direction: column;
 }
 
 .login {
     width: 36%;
     height: 100vh;
-    flex-direction: column;
     background: #FAFAFA;
     position: absolute;
+    justify-content: space-between;
     top: 0.055%;
     left: 56%;
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
     border-radius: 40px 0 0 40px;
+    padding: 0 1.6% 16px 1.6%;
+}
+
+.box-login-form {
+    padding: 140px 0 0 0;
 }
 
 .form {
@@ -79,6 +106,7 @@
 .btn-login,
 .signup {
     padding: 16px 0;
+    border-radius: 20px;
 }
 
 .signup {
@@ -88,30 +116,109 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-    
+    background: linear-gradient(90deg,#ff9015,#fd7a22);
+}
+
+.signup:hover {
+    background: linear-gradient(90deg,#ff9015,#ff9015);
+}
+
+.footer-links,
+.edit-password {
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    color: #ff8e0a;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 14px 0;
+}
+
+.edit-password {
+    justify-content: flex-end;
 }
 
 .btn-login {
     color: #FAFAFA;
-    background-color: #393A39;
+    background: #393A39;
     width: 100%;
+}
+
+.btn-login:hover {
+    background: #202121;
 }
 
 .res {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
 }
 
+.form-control {
+    border: 2px solid transparent;
+    background: transparent;
+    padding: 12px 0;
+    font-size: 14px;
+}
 
+.form-control:focus {
+    box-shadow: none;
+    border: 2px solid transparent;
+    background: transparent;
+}
 
-@media (max-width: 780px) {
+.box-input {
+    display: flex;
+    align-items: center;
+    background: #e2e6ea;
+    border: 2px solid #dae0e5;
+    padding: 0 4px 0 16px;
+    border-radius: 20px;
+}
+
+.active,
+.box-input:hover {
+    border-color: #202121;
+}
+
+.password {
+    cursor: pointer;
+}
+
+.box-icon {
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+}
+
+.contactus {
+    justify-content: flex-end;
+}
+
+@media (max-width: 782px) {
+    .container-login {
+        height: auto;
+    }
+
     .login {
         width: 100%;
+        height: auto;
         position: relative;
         top: 0;
         left: 0;
         box-shadow: none;
         border-radius: 0;
+    }
+
+    .box-login-form {
+        padding: 100px 0 0 0;
     }
 
     .box-banexboin {
@@ -129,9 +236,32 @@
     .signup {
         margin: 0 0 0 8px; 
     }
+
+    .footer-links,
+    .edit-password {
+        justify-content: center;
+    }
+
+    .footer-links {
+        margin: 8px 0 0 0;
+    }
+
+    .login-footer {
+        padding: 0 32px;
+        margin: 24px 0 32px 0;
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 420px) {
+    .login{
+        padding: 0 8% 16px 8%;
+    }
+
+    .box-login-form {
+        padding: 64px 0 0 0;
+    }
+
     .form {
         width: 96%; 
     }
@@ -141,5 +271,24 @@
     }
     .fs-5 {
         font-size: 1.16rem !important;
+    }
+
+    .login-footer {
+        padding: 0 32px;
+        margin: 24px 0 16px 0;
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .box-login-form {
+        padding: 20px 0 0 0;
+    }
+
+    .login-footer {
+        padding: 0 32px;
+        margin: 8px 0 16px 0;
+        flex-direction: column;
     }
 }
