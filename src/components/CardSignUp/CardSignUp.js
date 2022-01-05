@@ -5,7 +5,7 @@ import "./CardSignUp.css";
 const CardSignUp = ({cardImg, name, firstTitle, secondTitle, kind, goTo, idiom, space}) => {
     return (
         <div className={space ? "card space" : "card"}>
-            <Link to={`/${goTo}`} className="linkCard">
+            <Link to={goTo} className="linkCard">
                 <div className="card__card">
                     <div className="card__box">
                         <img src={cardImg} alt={name} className="card__box--img"/>

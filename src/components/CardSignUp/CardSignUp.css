@@ -6,11 +6,7 @@
 
 .card {
     width: 30%;
-    background-color: #FAFAFA;
-    display: flex;
-    flex-direction: column;
-
-    font-family: "Montserrat";
+    background-color: #F7F7F7;
     padding: 72px 40px 40px 40px;
     border-radius: 40px;
     border: none;
@@ -31,6 +27,13 @@
 h1,
 .card__information--message {
     box-sizing: border-box;
+}
+
+.card__card {
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Montserrat";
 }
 
 .card__box {
@@ -69,4 +72,54 @@ h1 {
 
 .card__information--message {
     color: #707070;
+}
+
+@media (max-width: 784px) {
+    .card {
+        width: 100%;
+        margin: 0 0 32px 0;
+        padding: 40px 16px 24px 24px;
+    }
+
+    .card__card {
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 56% 41%;
+        gap: 12px;
+    }
+
+    .card__box--img {
+        width: 100%;
+    }
+
+    .card__information {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .card {
+        padding: 0 12px;
+        margin: 0 0 36px 0;
+    }
+
+    .card__card {
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 56% 41%;
+        gap: 12px;
+    }
+
+    .card__box {
+        display: flex;
+        align-items: center;
+    }
+
+    .card__box--img {
+        width: 100%;
+        height: 64%;
+    }
 }
