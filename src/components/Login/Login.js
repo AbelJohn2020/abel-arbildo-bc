@@ -84,10 +84,6 @@ const Login = ({ idiom }) => {
                                 (usernameField.username==="" && usernameField.valid === false) && 
                                 <p className="empty-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
                             }
-                            {/* {
-                                (usernameField.username==="" && usernameField.valid === false) && 
-                                <p className="empty-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
-                            } */}
                         </div>
 
                         <div className="mb-3">

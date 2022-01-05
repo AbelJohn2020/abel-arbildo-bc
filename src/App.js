@@ -5,6 +5,7 @@ import SignUpForm from './components/SignUpForm/SignUpForm';
 import './App.css';
 import DashBoard from './components/DashBoard/DashBoard';
 import BanexcoinNavbar from './components/BanexcoinNavbar/BanexcoinNavbar';
+import SignUp from './components/SignUp/SignUp';
 
 function App() {
   const [idiom, setIdiom] = useState(false)
@@ -14,7 +15,8 @@ function App() {
         <BanexcoinNavbar idiom={idiom} setIdiom={setIdiom}/>
         <Routes>
           <Route path="/" element={<Login idiom={idiom} />} />
-          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/signup" element={<SignUp idiom={idiom} />} />
+          <Route path="/signup/form" element={<SignUpForm />} />
 
           <Route path="/wallet" element={<DashBoard />} />
           <Route path="/send" element={<DashBoard />} />

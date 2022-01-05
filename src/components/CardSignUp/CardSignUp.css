@@ -1,0 +1,72 @@
+@import url("../UI/global.css");
+
+.linkCard {
+    text-decoration: none;
+}
+
+.card {
+    width: 30%;
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Montserrat";
+    padding: 72px 40px 40px 40px;
+    border-radius: 40px;
+    border: none;
+    box-shadow: 0 0 18px 1px rgba(66, 65, 65, 0.18);
+}
+
+.space {
+    margin: 0 56px 0 0;
+}
+
+.card:hover {
+    box-shadow: 0 0 18px 1px rgba(25, 25, 25, 0.3);
+}
+
+.card__card,
+.card__box,
+.card__information,
+h1,
+.card__information--message {
+    box-sizing: border-box;
+}
+
+.card__box {
+    height: 292px;
+}
+
+.card__box--img {
+    width: 100%;
+    height: 100%;
+}
+
+.card__information {
+    margin: 32px 0 0 0;
+}
+
+h1,
+.card__information--message {
+    text-align: center;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 24px;
+    text-transform: capitalize;
+}
+
+.card__information--t1 {
+    color: #202121;
+    margin: 0 0 4px 0;
+}
+
+.card__information--t2 {
+    color: #ff9015;
+    margin: 0 0 8px 0;
+}
+
+.card__information--message {
+    color: #707070;
+}
