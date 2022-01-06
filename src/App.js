@@ -8,15 +8,21 @@ import BanexcoinNavbar from './components/BanexcoinNavbar/BanexcoinNavbar';
 import SignUp from './components/SignUp/SignUp';
 
 function App() {
-  const [idiom, setIdiom] = useState(false)
+  const [idiom, setIdiom] = useState(false);
+  const [account, setAccount] = useState("");
+
   return (
     <div className="App">
       <Router>
         <BanexcoinNavbar idiom={idiom} setIdiom={setIdiom}/>
         <Routes>
           <Route path="/" element={<Login idiom={idiom} />} />
-          <Route path="/signup" element={<SignUp idiom={idiom} />} />
-          <Route path="/signup/form" element={<SignUpForm />} />
+          <Route path="/signup" element={<SignUp idiom={idiom} setAccount={setAccount} />} />
+          {
+            account === "natural" 
+                ? <Route path="/signup/natural" element={<SignUpForm account={account} />} />
+                : <Route path="/signup/corporate" element={<SignUpForm account={account} />} />
+          }
 
           <Route path="/wallet" element={<DashBoard />} />
           <Route path="/send" element={<DashBoard />} />

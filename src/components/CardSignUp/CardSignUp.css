@@ -102,8 +102,8 @@ h1 {
 
 @media (max-width: 420px) {
     .card {
-        padding: 0 12px;
-        margin: 0 0 36px 0;
+        padding: 32px 12px;
+        margin: 0 0 32px 0;
     }
 
     .card__card {
@@ -114,12 +114,58 @@ h1 {
     }
 
     .card__box {
+        height: 100%;
         display: flex;
         align-items: center;
     }
 
+    .linkCard {
+        height: 100%;
+    }
+
+    .card__information {
+        height: 100%;
+    }
+
     .card__box--img {
         width: 100%;
-        height: 64%;
+    }
+}
+
+@media (max-width: 380px) {
+    .card {
+        margin: 0 0 24px 0;
+    }
+
+    .card__card {
+        grid-template-columns: 46% 54%;
+        gap: 4px;
+    }
+
+    .card__information--message {
+        font-size: 12px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 340px) {
+    .card {
+        padding: 32px 24px;
+    }
+
+    .card__card {
+        grid-template-columns: 48% 51%;
+        gap: 8px;
+    }
+
+    .card__information--message {
+        font-size: 10px;
+    }
+    
+    h1 {
+        font-size: 16px;
     }
 }

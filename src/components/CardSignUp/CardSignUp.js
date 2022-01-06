@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import "./CardSignUp.css";
 
-const CardSignUp = ({cardImg, name, firstTitle, secondTitle, kind, goTo, idiom, space}) => {
+const CardSignUp = ({ cardImg, altImg, firstTitle, secondTitle, kind, goTo, idiom, space, setAccount, name }) => {
     return (
-        <div className={space ? "card space" : "card"}>
+        <div onClick={() => setAccount(name)} className={space ? "card space" : "card"}>
             <Link to={goTo} className="linkCard">
                 <div className="card__card">
                     <div className="card__box">
-                        <img src={cardImg} alt={name} className="card__box--img"/>
+                        <img src={cardImg} alt={altImg} className="card__box--img"/>
                     </div> 
                     {
                         idiom
@@ -24,16 +24,6 @@ const CardSignUp = ({cardImg, name, firstTitle, secondTitle, kind, goTo, idiom, 
                                 </div>
                     }
                 </div>
-                {/* <div className="card__card">
-                    <div className="card__box">
-                        <img src={CardImg} alt="individual account" className="card__box--img"/>
-                    </div>
-                    <div className="card__information">
-                        <h1 className="card__information--t1">cuenta</h1>
-                        <h1 className="card__information--t2">individual</h1>
-                        <p className="card__information--message">Para cuentas personales</p>
-                    </div>
-                </div> */}
             </Link>
         </div>
     )

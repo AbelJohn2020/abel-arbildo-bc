@@ -3,9 +3,10 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import "./SignUpForm.css";
 
-const SignUpForm = () => {
+const SignUpForm = ({ account }) => {
     const [fieldPhone, setFieldPhone] = useState('');
     const [state, setstate] = useState({
+        account: account,
         username: '',
         password: '',
         countryCode: '',
@@ -16,6 +17,8 @@ const SignUpForm = () => {
         date: new Date(),
         status: 1,
     });
+
+    console.log(state)
 
     const [form, setForm] = useState({})
 
