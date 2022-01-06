@@ -7,64 +7,62 @@ const SignUpForm = ({ account }) => {
     const [fieldPhone, setFieldPhone] = useState('');
     const [state, setstate] = useState({
         account: account,
-        username: '',
-        password: '',
-        countryCode: '',
-        firstName: '',
-        lastName: '',
-        address: '',
-        birthdate: '',
+        username: { username: '', valid: null },
+        password: { password: '', valid: null },
+        code: { countryCode: '', valid: null },
+        name: { firstName: '', valid: null },
+        lastname: { lastName: '', valid: null },
+        address: { address: '', valid: null },
+        birthdate: { birthdate: '', valid: null },
         date: new Date(),
         status: 1,
     });
 
-    console.log(state)
-
     const [form, setForm] = useState({})
 
     const onChangeUsername = (e) => {
-        setstate({...state, username: e.target.value});
+        setstate({...state, username: {...state.username, username: e.target.value}});
     }
 
     const onChangePassword = (e) => {
-        setstate({...state, password: e.target.value});
+        setstate({...state, password: {...state.password, password: e.target.value}});
     }
 
     const onChangeCountryCode = (e) => {
-        setstate({...state, countryCode: e.target.value});
+        setstate({...state, code: {...state.code, countryCode: e.target.value}});
     }
 
     const onChangeFirstName = (e) => {
-        setstate({...state, firstName: e.target.value});
+        setstate({...state, name: {...state.name, firstName: e.target.value}});
     }
 
     const onChangeLastName = (e) => {
-        setstate({...state, lastName: e.target.value});
+        setstate({...state, lastname: {...state.lastname, lastName: e.target.value}});
     }
 
     const onChangeAddress = (e) => {
-        setstate({...state, address: e.target.value});
+        setstate({...state, address: {...state.address, address: e.target.value}});
     }
 
     const onChangeBirthdate = (e) => {
-        setstate({...state, birthdate: e.target.value});
+        setstate({...state, birthdate: {...state.birthdate, birthdate: e.target.value}});
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(form);
         setForm({ ...form, ...state, fieldPhone });
         console.log(form);
 
         setFieldPhone('')
         setstate({
-            username: '',
-            password: '',
-            countryCode: '',
-            firstName: '',
-            lastName: '',
-            address: '',
-            birthdate: '',
+            account: "",
+            username: { username: '', valid: null },
+            password: { password: '', valid: null },
+            code: { countryCode: '', valid: null },
+            name: { firstName: '', valid: null },
+            lastname: { lastName: '', valid: null },
+            address: { address: '', valid: null },
+            birthdate: { birthdate: '', valid: null },
             date: new Date(),
             status: 1,
         });
@@ -74,7 +72,7 @@ const SignUpForm = ({ account }) => {
     //     if(passwordField.password.length >= 2) {
     //         const getPassword = passwordField.password.split('');
     //         const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-    //         const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    //         const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     //         console.log(getPassword)
             
     //         // setPasswordField({ ...passwordField, valid: true });
@@ -96,7 +94,7 @@ const SignUpForm = ({ account }) => {
                             className="form-control" 
                             id="user" 
                             name="username"
-                            value={state.username}
+                            value={state.username.username}
                             onChange={onChangeUsername}
                         />
                     </div>
@@ -108,7 +106,7 @@ const SignUpForm = ({ account }) => {
                             className="form-control" 
                             id="password" 
                             name="password"
-                            value={state.password}
+                            value={state.password.password}
                             onChange={onChangePassword}
                         />
                     </div>
@@ -116,11 +114,11 @@ const SignUpForm = ({ account }) => {
                     <div className="mb-3">
                         <label htmlFor="countryCode" className="form-label text-capitalize fw-bold text-white">country code</label>
                         <input 
-                            type="text" 
+                            type="number" 
                             className="form-control" 
                             id="countryCode" 
                             name="countryCode"
-                            value={state.countryCode}
+                            value={state.code.countryCode}
                             onChange={onChangeCountryCode}
                         />
                     </div>
@@ -143,7 +141,7 @@ const SignUpForm = ({ account }) => {
                             className="form-control" 
                             id="firstName" 
                             name="firstName"
-                            value={state.firstName}
+                            value={state.name.firstName}
                             onChange={onChangeFirstName}
                         />
                     </div>
@@ -155,7 +153,7 @@ const SignUpForm = ({ account }) => {
                             className="form-control" 
                             id="lastName" 
                             name="lastName"
-                            value={state.lastName}
+                            value={state.lastname.lastName}
                             onChange={onChangeLastName}
                         />
                     </div>
@@ -167,7 +165,7 @@ const SignUpForm = ({ account }) => {
                             className="form-control" 
                             id="address" 
                             name="address"
-                            value={state.address}
+                            value={state.address.address}
                             onChange={onChangeAddress}
                         />
                     </div>
@@ -179,7 +177,7 @@ const SignUpForm = ({ account }) => {
                             className="form-control" 
                             id="birthdate" 
                             name="birthdate"
-                            value={state.birthdate}
+                            value={state.birthdate.birthdate}
                             onChange={onChangeBirthdate}
                         />
                     </div>
