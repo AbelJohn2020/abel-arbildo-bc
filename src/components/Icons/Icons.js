@@ -3,6 +3,7 @@ import { BsFillGrid3X3GapFill, BsEyeSlash, BsEye } from "react-icons/bs";
 import { BsCoin } from "react-icons/bs";
 import { IoIosWallet, IoIosPaperPlane, IoMdContacts } from "react-icons/io";
 import { ImArrowDown } from "react-icons/im";
+import { IoAtSharp } from "react-icons/io5"
 
 const iconSet = {
   dashBoard: BsFillGrid3X3GapFill,
@@ -16,6 +17,7 @@ const iconSet = {
   user: FaRegUser,
   password: BsEyeSlash,
   showPassword: BsEye,
+  email: IoAtSharp,
 };
 
 const Icons = ({ type, size, color }) => {

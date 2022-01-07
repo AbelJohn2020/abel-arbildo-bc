@@ -1,14 +1,89 @@
-.sign-up {
+.sign-up,
+.box-signup-form {
     box-sizing: border-box;
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 40%;
     flex-direction: column;
-    background: linear-gradient( rgba(253, 126, 20, 0.85), rgb(255, 193, 7));
-    padding: 24px 0 40px 0;
 }
+
+.sign-up {
+    width: 36%;
+    height: 100vh;
+    background: #FAFAFA;
+    position: absolute;
+    justify-content: space-between;
+    top: 0.055%;
+    left: 56%;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 40px 0 0 40px;
+    padding: 0 1.6% 16px 1.6%;
+}
+
+.box-signup-form {
+    justify-content: center;
+    align-items: center;
+    padding: 64px 0 0 0;
+    font-family: "Montserrat";
+}
+
+.title-information {
+    width: 100%;
+}
+
+.login-account,
+.title {
+    display: flex;
+    justify-content: center;
+    text-transform: none;
+    text-align: center;
+}
+
+.title {
+    color: #202121;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    text-transform: none;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}
+
+.title div {
+    color: #ff8e0a;
+    padding: 0 0 0 8px;
+}
+
+.login-account
+.account-type {
+    padding: 0;
+    font-weight: 600;
+}
+
+.account-type {
+    color: #373a39;
+    margin: 10px 0 24px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.login-account {
+    color: #585858;
+    margin: 0;
+    font-size: 14px;
+    align-items: center;
+}
+
+.padding-login-account {
+    padding: 0 0 0 4px;
+    text-transform: capitalize;
+}
+
+.form-label,
+input{
+    font-size: 14px;
+}
+
 
 .phone-input input {
     border: none;

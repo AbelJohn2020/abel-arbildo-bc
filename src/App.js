@@ -20,7 +20,7 @@ function App() {
           <Route path="/signup" element={<SignUp idiom={idiom} setAccount={setAccount} />} />
           {
             account === "natural" 
-                ? <Route path="/signup/natural" element={<SignUpForm account={account} />} />
+                ? <Route path="/signup/natural" element={<SignUpForm account={account} idiom={idiom} />} />
                 : <Route path="/signup/corporate" element={<SignUpForm account={account} />} />
           }
 

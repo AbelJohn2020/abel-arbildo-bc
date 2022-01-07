@@ -1,0 +1,26 @@
+.form-control {
+    border: 2px solid transparent;
+    background: transparent;
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 2px solid transparent;
+    background: transparent;
+}
+
+.box-input {
+    display: flex;
+    align-items: center;
+    background: #e2e6ea;
+    border: 2px solid #dae0e5;
+    padding: 0 4px 0 16px;
+    border-radius: 20px;
+}
+
+.active,
+.box-input:hover {
+    border-color: #202121;
+}
