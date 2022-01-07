@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Input, Password } from '../Input/Input';
 import "./SignUpForm.css";
 import BanexcoinSignup from "../images/individual-sign-up.png";
+import Icons from '../Icons/Icons';
 
 const SignUpForm = ({ account, idiom }) => {
     const [fieldPhone, setFieldPhone] = useState('');
@@ -32,6 +33,56 @@ const SignUpForm = ({ account, idiom }) => {
 
     const onChangeUsername = (e) => {
         setState({...state, username: {...state.username, username: e.target.value}});
+    }
+
+    const validationInputText = (inputValue) => {
+        const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        const mayusAlphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+        const getArray = inputValue.split('');
+        const areThereNumbers = numbers.map( number => {
+            return getArray.includes( number )
+        })
+
+        const areThereLetters = alphabet.map( letter => {
+            return getArray.includes(letter)
+        })
+
+        const areThereMayusLetters = mayusAlphabet.map( letter => {
+            return getArray.includes(letter)
+        })
+
+        const validNumbers = areThereNumbers.filter(element => element === true);
+        const validAphabet = areThereLetters.filter(element => element === true);
+        const validMayus = areThereMayusLetters.filter(element => element === true);
+        
+        if(validMayus?.length === 0){
+            return "no-Uppercase";
+        } else if (validAphabet?.length === 0) {
+            return "no-lowercase";
+        } else if (validNumbers?.length === 0) {
+            return "no-numbers";
+        } else {
+            return "safe-username";
+        }
+    }
+
+    const validationEmail = () => {
+        const getArray = state.email.email.split('');
+        const elements = ["@", "."];
+
+        const getNewArr = elements.map( element => {
+            return getArray.includes(element)
+        });
+
+        const filterArr = getNewArr.filter( element => element === true )
+
+        if(filterArr?.length === 2) {
+            return "valid-email";
+        } else {
+            return "invalid-email";
+        }
     }
 
     const onChangeEmail = (e) => {
@@ -84,24 +135,31 @@ const SignUpForm = ({ account, idiom }) => {
             })
 
         } else {
+            setState({
+                ...state,
+                username: { ...state.username, valid: true },
+                email: { ...state.email, valid: true },
+                password: { ...state.password, valid: true },
+                confirmPassword: { ...state.confirmPassword, valid: true }
+            })
             setForm({ ...form, ...state, fieldPhone });
             console.log(form);
     
-            setFieldPhone('')
-            setState({
-                account: "",
-                username: { username: '', valid: null },
-                email: { email: '', valid: null },
-                password: { password: '', valid: null },
-                confirmPassword: { confirmPassword: '', valid: null },
-                code: { countryCode: '', valid: null },
-                name: { firstName: '', valid: null },
-                lastname: { lastName: '', valid: null },
-                address: { address: '', valid: null },
-                birthdate: { birthdate: '', valid: null },
-                date: new Date(),
-                status: 1,
-            });
+            // setFieldPhone('')
+            // setState({
+            //     account: "",
+            //     username: { username: '', valid: null },
+            //     email: { email: '', valid: null },
+            //     password: { password: '', valid: null },
+            //     confirmPassword: { confirmPassword: '', valid: null },
+            //     code: { countryCode: '', valid: null },
+            //     name: { firstName: '', valid: null },
+            //     lastname: { lastName: '', valid: null },
+            //     address: { address: '', valid: null },
+            //     birthdate: { birthdate: '', valid: null },
+            //     date: new Date(),
+            //     status: 1,
+            // });
         }
 
     }
@@ -143,10 +201,15 @@ const SignUpForm = ({ account, idiom }) => {
                         }
                     </div>
                     <form className="form" onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <label htmlFor="user" className="form-label text-capitalize fw-bold">
-                                { idiom ? "username" : "usuario" }
-                            </label>
+                        <div className="box-field" >
+                            <div className="d-flex align-items-center box-field">
+                                <label htmlFor="user" className="form-label text-capitalize fw-bold space-circle">
+                                    { idiom ? "username" : "usuario" }
+                                </label>
+                                {
+                                    validationInputText(state.username.username) === "safe-username" &&  <Icons type="check" color="green" />
+                                }
+                            </div>
                             <Input 
                                 setActive={setActive}
                                 active={active}
@@ -161,14 +224,37 @@ const SignUpForm = ({ account, idiom }) => {
                             />
                             {
                                 (state.username.username==="" && state.username.valid === false) && 
-                                <p className="empty-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                                <p className="validation-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                            }
+
+                            {
+                                (state.username.username.length >= 7 && validationInputText(state.username.username) === "no-Uppercase") &&
+                                <p className="validation-message">{idiom ? "A capital letter required" : "Se requiere una letra mayúscula"}</p>
+                            }
+
+                            {
+                                (state.username.username.length >= 7 && validationInputText(state.username.username) === "no-lowercase") &&
+                                <p className="validation-message">{idiom ? "A lowercase letter is required" : "Se requiere una letra minúscula"}</p>
+                            }
+                            {
+                                (state.username.username.length >= 7 && validationInputText(state.username.username) === "no-numbers") &&
+                                <p className="validation-message">{idiom ? "A number is required" : "Se requiere un número"}</p>
+                            }
+                            {
+                                (state.username.username.length < 7 && state.username.username.length > 0) &&
+                                <p className="validation-message">{idiom ? "Minimum characters: 7" : "Mínimo de caracteres: 7"}</p>
                             }
                         </div>
 
-                        <div className="mb-3">
-                            <label htmlFor="email" className="form-label text-capitalize fw-bold">
-                                {idiom ? "email" : "correo electrónico"}
-                            </label>
+                        <div className="box-field">
+                            <div className="d-flex align-items-center box-field ">
+                                <label htmlFor="email" className="form-label text-capitalize fw-bold space-circle">
+                                    {idiom ? "email" : "correo electrónico"}
+                                </label>
+                                {
+                                    validationEmail(state.email.email) === "valid-email" &&  <Icons type="check" color="green" />
+                                }
+                            </div>
                             <Input 
                                 setActive={setActive}
                                 active={active}
@@ -177,20 +263,29 @@ const SignUpForm = ({ account, idiom }) => {
                                 onChangeInput={onChangeEmail}
                                 nameIcon="email"
                                 nameInput="email"
-                                typeInput="email"
+                                typeInput="text"
                                 fieldInput={state.email.email}
                                 fieldValid={state.email.valid}
                             />
                             {
                                 (state.email.email==="" && state.email.valid === false) && 
-                                <p className="empty-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                                <p className="validation-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                            }
+                            {
+                                (state.email.email.length > 24 && validationEmail()==="invalid-email") &&
+                                <p className="validation-message">{idiom ? "Invalid email" : "Email no valido"}</p>
                             }
                         </div>
                         
-                        <div className="mb-3">
-                            <label htmlFor="password" className="form-label text-capitalize fw-bold">
-                                { idiom ? "password" : "contraseña" }
-                            </label>
+                        <div className="box-field">
+                            <div className="d-flex align-items-center box-field">
+                                <label htmlFor="password" className="form-label text-capitalize fw-bold space-circle">
+                                    { idiom ? "password" : "contraseña" }
+                                </label>
+                                {
+                                    validationInputText(state.password.password) === "safe-username" &&  <Icons type="check" color="green" />
+                                }
+                            </div>
 
                             <Password 
                                 setActive={setActive}
@@ -206,14 +301,38 @@ const SignUpForm = ({ account, idiom }) => {
                             />
                             {
                                 (state.password.password==="" && state.password.valid === false) && 
-                                <p className="empty-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                                <p className="validation-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                            }
+
+{
+                                (state.password.password.length >= 7 && validationInputText(state.password.password) === "no-Uppercase") &&
+                                <p className="validation-message">{idiom ? "A capital letter required" : "Se requiere una letra mayúscula"}</p>
+                            }
+
+                            {
+                                (state.password.password.length >= 7 && validationInputText(state.password.password) === "no-lowercase") &&
+                                <p className="validation-message">{idiom ? "A lowercase letter is required" : "Se requiere una letra minúscula"}</p>
+                            }
+                            {
+                                (state.password.password.length >= 7 && validationInputText(state.password.password) === "no-numbers") &&
+                                <p className="validation-message">{idiom ? "A number is required" : "Se requiere un número"}</p>
+                            }
+                            {
+                                (state.password.password.length < 7 && state.password.password.length > 0) &&
+                                <p className="validation-message">{idiom ? "Minimum characters: 7" : "Mínimo de caracteres: 7"}</p>
                             }
                         </div>
 
-                        <div className="mb-3">
-                            <label htmlFor="confirm-password" className="form-label text-capitalize fw-bold">
-                                { idiom ? "Retype Password" : "Reescribir Contraseña" }
-                            </label>
+                        <div className="box-field">
+                            <div className="d-flex align-items-center box-field">
+                                <label htmlFor="confirm-password" className="form-label text-capitalize fw-bold space-circle">
+                                    { idiom ? "Retype Password" : "Reescribir Contraseña" }
+                                </label>
+                                {
+                                    (state.confirmPassword.confirmPassword.length > 0 && state.confirmPassword.confirmPassword === state.password.password) && 
+                                        <Icons type="check" color="green" />
+                                }
+                            </div>
 
                             <Password 
                                 setActive={setActive}
@@ -229,11 +348,16 @@ const SignUpForm = ({ account, idiom }) => {
                             />
                             {
                                 (state.confirmPassword.confirmPassword==="" && state.confirmPassword.valid === false) && 
-                                <p className="empty-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                                <p className="validation-message">{idiom ? "Obligatory field" : "Campo obligatorio"}</p>
+                            }
+
+                            {
+                                (state.confirmPassword.confirmPassword.length > 0 && state.confirmPassword.confirmPassword !== state.password.password) &&
+                                <p className="validation-message">{idiom ? "Password is not the same" : "La contraseña no es la misma"}</p>
                             }
                         </div>
                         
-                        {/* <div className="mb-3">
+                        {/* <div className={ (state.username.username==="" && state.username.valid === null) && "box-field" }>
                             <label htmlFor="countryCode" className="form-label text-capitalize fw-bold">country code</label>
                             <input 
                                 type="number" 
@@ -245,7 +369,7 @@ const SignUpForm = ({ account, idiom }) => {
                             />
                         </div>
                         
-                        <div className="mb-3">
+                        <div className={ (state.username.username==="" && state.username.valid === null) && "box-field" }>
                             <label htmlFor="phone" className="form-label text-capitalize fw-bold">phone</label>
                             <PhoneInput 
                                 className="form-control phone-input" 
@@ -256,7 +380,7 @@ const SignUpForm = ({ account, idiom }) => {
                             /> 
                         </div>
 
-                        <div className="mb-3">
+                        <div className={ (state.username.username==="" && state.username.valid === null) && "box-field" }>
                             <label htmlFor="firstName" className="form-label text-capitalize fw-bold">first name</label>
                             <input 
                                 type="text" 
@@ -268,7 +392,7 @@ const SignUpForm = ({ account, idiom }) => {
                             />
                         </div>
                         
-                        <div className="mb-3">
+                        <div className={ (state.username.username==="" && state.username.valid === null) && "box-field" }>
                             <label htmlFor="lastName" className="form-label text-capitalize fw-bold">last name</label>
                             <input 
                                 type="text" 
@@ -280,7 +404,7 @@ const SignUpForm = ({ account, idiom }) => {
                             />
                         </div>
 
-                        <div className="mb-3">
+                        <div className={ (state.username.username==="" && state.username.valid === null) && "box-field" }>
                             <label htmlFor="address" className="form-label text-capitalize fw-bold">address</label>
                             <input 
                                 type="text" 
@@ -292,7 +416,7 @@ const SignUpForm = ({ account, idiom }) => {
                             />
                         </div>
                         
-                        <div className="mb-3">
+                        <div className={ (state.username.username==="" && state.username.valid === null) && "box-field" }>
                             <label htmlFor="birthdate" className="form-label text-capitalize fw-bold">birthdate</label>
                             <input 
                                 type="date" 
@@ -304,6 +428,23 @@ const SignUpForm = ({ account, idiom }) => {
                             />
                         </div> */}
 
+                        <div className="box-circles">
+                            <div className={(
+                                state.username.valid===true && 
+                                state.email.valid===true && 
+                                state.password.valid===true &&
+                                state.confirmPassword.valid===true
+                            ) ? "circle space-circle" : "ready-data space-circle" }></div>
+                            <div className={
+                                (
+                                    state.username.valid===true && 
+                                    state.email.valid===true && 
+                                    state.password.valid===true &&
+                                    state.confirmPassword.valid===true
+                                ) ? "ready-data space-circle" : "circle space-circle"
+                            }></div>
+                        </div>
+
                         <button 
                             type="submit" 
                             className="btn text-capitalize lh-base align-middle border-2 border-light text-white btn-login"
@@ -311,7 +452,7 @@ const SignUpForm = ({ account, idiom }) => {
                         <h1 className="login-account">
                             { idiom ? "Do you already have an account? " : "¿Ya tienes una cuenta? "}
                             <div className="padding-login-account">
-                                <Link to="/" className="footer-links">
+                                <Link to="/" className="footer-link-form">
                                     { idiom ? "login" : "iniciar sesión"}
                                 </Link>
                             </div>

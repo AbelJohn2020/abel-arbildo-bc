@@ -21,12 +21,16 @@
 .box-signup-form {
     justify-content: center;
     align-items: center;
-    padding: 64px 0 0 0;
+    padding: 32px 0 0 0;
     font-family: "Montserrat";
 }
 
 .title-information {
     width: 100%;
+}
+
+.box-field {
+    margin: 0 0 8px 0;
 }
 
 .login-account,
@@ -62,7 +66,7 @@
 
 .account-type {
     color: #373a39;
-    margin: 10px 0 24px 0;
+    margin: 10px 0 16px 0;
     font-size: 16px;
     text-align: center;
 }
@@ -72,11 +76,39 @@
     margin: 0;
     font-size: 14px;
     align-items: center;
+    margin: 8px 0 0 0;  
 }
 
 .padding-login-account {
     padding: 0 0 0 4px;
     text-transform: capitalize;
+}
+
+.box-circles {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 8px 0;
+    padding: 0;
+}
+
+.ready-data,
+.circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+}
+
+.circle {
+    background-color: #c6c6c6;
+}
+
+.ready-data {
+    background-color: #ff8e0a;
+}
+
+.space-circle {
+    margin: 0 6px 0 0;
 }
 
 .form-label,
@@ -90,10 +122,35 @@ input{
     outline: none;
 }
 
+.footer-link-form {
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    color: #ff8e0a;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 14px 0;
+}
+
+.validation-message {
+    font-size: 11px;
+    font-weight: 500;
+    color: #fc5c5c;
+    padding: 4px 0 0 0;
+    margin: 0;
+}
+
 @media (max-width: 780px) {
     .sign-up {
         width: 100%;
         padding: 24px 4% 40px 4%;
+
+        height: auto;        
+        position: relative;        
+        top: 0;        
+        left: 0;        
+        box-shadow: none;        
+        border-radius: 0;
     }
 }
 
