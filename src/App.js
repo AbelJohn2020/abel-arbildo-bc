@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login';
 import SignUpForm from './components/SignUpForm/SignUpForm';
@@ -10,6 +10,20 @@ import SignUp from './components/SignUp/SignUp';
 function App() {
   const [idiom, setIdiom] = useState(false);
   const [account, setAccount] = useState("");
+  console.log(account, "account")
+
+  useEffect(() => {
+    setAccount(JSON.parse(window.localStorage.getItem("")));
+    setIdiom(JSON.parse(window.localStorage.getItem("false")));
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("", JSON.stringify(account));
+  }, [account]);
+
+  useEffect(() => {
+        window.localStorage.setItem("false", JSON.stringify(idiom));
+  }, [idiom]);
 
   return (
     <div className="App">
@@ -21,7 +35,7 @@ function App() {
           {
             account === "natural" 
                 ? <Route path="/signup/natural" element={<SignUpForm account={account} idiom={idiom} />} />
-                : <Route path="/signup/corporate" element={<SignUpForm account={account} />} />
+                : <Route path="/signup/corporate" element={<SignUpForm account={account} idiom={idiom} />} />
           }
 
           <Route path="/wallet" element={<DashBoard />} />

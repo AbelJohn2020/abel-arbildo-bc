@@ -9,20 +9,27 @@ import Icons from '../Icons/Icons';
 
 const SignUpForm = ({ account, idiom }) => {
     const [fieldPhone, setFieldPhone] = useState('');
+
     const [state, setState] = useState({
         account: account,
         username: { username: '', valid: null },
         email: { email: '', valid: null },
         password: { password: '', valid: null },
         confirmPassword: { confirmPassword: '', valid: null },
-        code: { countryCode: '', valid: null },
+        date: new Date(),
+        status: 1,
+    });
+
+    const [secondState, setSecondState] = useState({
+        ...state,
         name: { firstName: '', valid: null },
         lastname: { lastName: '', valid: null },
         address: { address: '', valid: null },
         birthdate: { birthdate: '', valid: null },
-        date: new Date(),
-        status: 1,
-    });
+        code: { countryCode: '', valid: null },
+    })
+
+    console.log(state)
 
     const [form, setForm] = useState({});
     const [active, setActive] = useState("");
@@ -163,20 +170,6 @@ const SignUpForm = ({ account, idiom }) => {
         }
 
     }
-
-    // const passwordMessage = () => {
-    //     if(passwordField.password.length >= 2) {
-    //         const getPassword = passwordField.password.split('');
-    //         const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-    //         const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-    //         console.log(getPassword)
-            
-    //         // setPasswordField({ ...passwordField, valid: true });
-    //     } else {
-    //         // return "worng"
-    //         console.log("wrong");
-    //     }
-    // }
 
     return (
         <div className="container-login">
@@ -459,16 +452,16 @@ const SignUpForm = ({ account, idiom }) => {
                         </h1>
 
                     </form>
-                    <div className="login-footer">
-                        <Link 
-                            to="/support/solutions" 
-                            className="footer-links"
-                        >{idiom ? "Terms and Conditions" : "Terminos y Condiciones"}</Link>
-                        <Link 
-                            to="/support/tickets" 
-                            className="footer-links contactus"
-                        >{idiom ? "Contact Us" : "Contáctanos"}</Link>
-                    </div>
+                </div>
+                <div className="login-footer">
+                    <Link 
+                        to="/support/solutions" 
+                        className="footer-links"
+                    >{idiom ? "Terms and Conditions" : "Terminos y Condiciones"}</Link>
+                    <Link 
+                        to="/support/tickets" 
+                        className="footer-links contactus"
+                    >{idiom ? "Contact Us" : "Contáctanos"}</Link>
                 </div>
             </div>
         </div>

@@ -28,6 +28,7 @@ const SignUp = ({ idiom, setAccount }) => {
                 kind={idiom ? "For corporate accounts" : "Para cuentas empresariales" }
                 goTo="/signup/corporate"
                 idiom={idiom}
+                space={false}
                 setAccount={setAccount}
                 name="corporate"
             />
